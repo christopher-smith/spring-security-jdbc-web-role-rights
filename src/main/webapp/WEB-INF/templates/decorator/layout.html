@@ -1,0 +1,15 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title th:utext="Test Site" layout:title-pattern="$DECORATOR_TITLE &gt; $CONTENT_TITLE"> Test Title </title>
+</head>
+<body>
+
+<div id="content" layout:fragment="content">
+	<p>The requested resource could not be found.</p>
+</div>
+
+</body>
+</html>

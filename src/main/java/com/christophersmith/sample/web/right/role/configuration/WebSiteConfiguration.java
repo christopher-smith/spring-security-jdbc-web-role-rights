@@ -14,6 +14,10 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
+/**
+ * 
+ * @author Christopher Smith (https://github.com/christopher-smith)
+ */
 @Configuration
 @ComponentScan({
     "com.christophersmith.sample.web.right.role"})
@@ -35,6 +39,10 @@ public class WebSiteConfiguration extends WebMvcConfigurerAdapter
             RESOURCE_HANDLER_LOCATION_PATH);
     }
 
+    /**
+     * 
+     * @return
+     */
     @Bean
     @Description("Thymeleaf template resolver serving HTML 5")
     public ServletContextTemplateResolver templateResolver()
@@ -48,6 +56,10 @@ public class WebSiteConfiguration extends WebMvcConfigurerAdapter
         return templateResolver;
     }
 
+    /**
+     * 
+     * @return
+     */
     @Bean
     @Description("Thymeleaf template engine with Spring integration")
     public SpringTemplateEngine templateEngine()
@@ -58,6 +70,10 @@ public class WebSiteConfiguration extends WebMvcConfigurerAdapter
         return templateEngine;
     }
 
+    /**
+     * 
+     * @return
+     */
     @Bean
     @Description("Thymeleaf view resolver")
     public ThymeleafViewResolver viewResolver()

@@ -1,12 +1,16 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="decorator/layout">
 <head>
 	<title> Test Page </title>
 </head>
 <body>
 
-<p>This is just a test.</p>
+<div layout:fragment="content">
+	<p>This is just a test.</p>
+</div>
 
 </body>
 </html>

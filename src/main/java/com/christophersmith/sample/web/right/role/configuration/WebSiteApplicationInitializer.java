@@ -9,6 +9,8 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.servlet.DispatcherServlet;
 
 /**
+ * This class initializes a Spring WebApplicationContext, in place of doing this in the web.xml
+ * file.
  * 
  * @author Christopher Smith (https://github.com/christopher-smith)
  */
