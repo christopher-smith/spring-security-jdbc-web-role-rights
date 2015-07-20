@@ -5,8 +5,8 @@ import org.joda.time.DateTime;
 /**
  * WebUserRole contains information about Web User Roles used by the system.
  * <p>
- * A Web User Role is assigned to one or more Web Rights for easier management of permissions to
- * various functions and views of the web site.
+ * A Web User Role is assigned to one or more {@link WebRight} objects for easier management of
+ * permissions to various functions and views of the web site.
  * 
  * @author Christopher Smith (https://github.com/christopher-smith)
  */
