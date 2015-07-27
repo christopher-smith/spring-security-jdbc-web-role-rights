@@ -1,6 +1,10 @@
 package com.christophersmith.sample.web.right.role.domain;
 
 /**
+ * WebSection contains information about a web site section.
+ * <p>
+ * Web Sections are logical sections of the web site, with one or more pages defined within each
+ * section.
  * 
  * @author Christopher Smith (https://github.com/christopher-smith)
  */
@@ -50,13 +54,18 @@ public class WebSection
         return code;
     }
 
+    /**
+     * Sets the code for this instance.
+     * 
+     * @param code
+     */
     public void setCode(String code)
     {
         this.code = code;
     }
 
     /**
-     * Returns the
+     * Returns the display order for this instance.
      * 
      * @return
      */
@@ -65,6 +74,11 @@ public class WebSection
         return order;
     }
 
+    /**
+     * Sets the display order for this instance.
+     * 
+     * @param order
+     */
     public void setOrder(int order)
     {
         this.order = order;

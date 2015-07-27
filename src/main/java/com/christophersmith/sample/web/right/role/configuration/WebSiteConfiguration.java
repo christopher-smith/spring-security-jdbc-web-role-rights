@@ -8,8 +8,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -21,6 +23,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 
 /**
+ * WebSiteConfiguration is Spring JavaConfig class that configures this web site.
  * 
  * @author Christopher Smith (https://github.com/christopher-smith)
  */
@@ -38,6 +41,10 @@ public class WebSiteConfiguration extends WebMvcConfigurerAdapter
     private static final String THYMELEAF_RESOLVER_TEMPLATE_MODE = "HTML5";
     private static final String CHARACTER_ENCODING_UTF8          = "UTF-8";
 
+    /**
+     * Adds the /assets/ URI to the {@link ResourceHandlerRegistry} for this site for static
+     * content.
+     */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry)
     {
@@ -46,6 +53,10 @@ public class WebSiteConfiguration extends WebMvcConfigurerAdapter
     }
 
     /**
+     * Returns a {@link ServletContextTemplateResolver} for Thymeleaf templates.
+     * <p>
+     * This is configured to look for templates in the /WEB-INF/templates/ directory with a suffix
+     * of {@code .html} and a mode of HTML5. Character encoding is also set to UTF-8.
      * 
      * @return
      */
@@ -62,6 +73,8 @@ public class WebSiteConfiguration extends WebMvcConfigurerAdapter
     }
 
     /**
+     * Returns a {@link SpringTemplateEngine} configured with a {@link LayoutDialect} dialect and
+     * sets the {@link ThymeleafViewResolver}.
      * 
      * @return
      */
@@ -76,6 +89,7 @@ public class WebSiteConfiguration extends WebMvcConfigurerAdapter
     }
 
     /**
+     * Returns a {@link ThymeleafViewResolver} with a character encoding of UTF-8.
      * 
      * @return
      */
@@ -90,6 +104,7 @@ public class WebSiteConfiguration extends WebMvcConfigurerAdapter
     }
 
     /**
+     * Returns a {@link DataSource} for the H2 SQL database.
      * 
      * @return
      */
@@ -101,6 +116,19 @@ public class WebSiteConfiguration extends WebMvcConfigurerAdapter
     }
 
     /**
+     * Returns a {@link PlatformTransactionManager} for the H2 SQL database.
+     * 
+     * @return
+     */
+    @Bean
+    @Qualifier("h2SqlDataSourceTransactionManager")
+    public PlatformTransactionManager h2SqlDataSourceTransactionManager()
+    {
+        return new DataSourceTransactionManager(h2SqlDataSource());
+    }
+
+    /**
+     * Returns a {@link JdbcTemplate} for the H2 SQL database.
      * 
      * @return
      */
